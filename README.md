@@ -25,7 +25,7 @@ A two-stage agentic pipeline with graceful fallbacks — designed for production
 
 ## 📸 Demo
 
-> [Add a GIF or screenshot here once published]
+![PriceShift Demo](demo.gif)
 
 ---
 
