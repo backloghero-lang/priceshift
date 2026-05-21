@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Allegro → Amazon Porównywarka",
+  "version": "2.0",
+  "description": "Porównaj produkty z Allegro na Amazon - z inteligentnym dopasowaniem AI",
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": [
+    "*://*.amazon.pl/*",
+    "https://api.anthropic.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.allegro.pl/*"],
+      "js": ["content.js"],
+      "css": ["style.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "48": "icon.png"
+  }
+}

@@ -1,0 +1,474 @@
+/* =========================
+   PREMIUM AMAZON COMPARE CTA v2.0
+   ========================= */
+
+#amz-compare-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 14px 0;
+  width: 100%;
+  position: relative;
+}
+
+.amazon-compare-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 272px;
+  height: 45px;
+  padding: 0 13px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: linear-gradient(135deg, #001a72 0%, #0038c7 55%, #0057ff 100%);
+  box-shadow:
+    0 8px 19px rgba(0, 61, 255, 0.28),
+    0 0 18px rgba(0, 102, 255, 0.22),
+    inset 0 1px 0 rgba(255,255,255,0.18);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease;
+  animation: amazonPulse 2.6s infinite;
+  font-family: "Amazon Ember", Arial, sans-serif;
+}
+
+.amazon-compare-btn::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(0,123,255,0.35), rgba(0,87,255,0.15));
+  filter: blur(12px);
+  z-index: -1;
+}
+
+.amazon-compare-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.16), transparent);
+  transform: skewX(-24deg);
+  animation: shineMove 4s infinite;
+  pointer-events: none;
+}
+
+.amazon-compare-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow:
+    0 16px 34px rgba(0, 72, 255, 0.38),
+    0 0 28px rgba(0, 119, 255, 0.32),
+    inset 0 1px 0 rgba(255,255,255,0.22);
+  filter: brightness(1.04);
+}
+
+.amazon-compare-btn.amz-loading {
+  opacity: 0.8;
+  cursor: wait;
+}
+
+/* === LEWA IKONA === */
+.amazon-compare-btn__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.96);
+  flex-shrink: 0;
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,0.5),
+    0 3px 8px rgba(0,0,0,0.18);
+}
+
+.amazon-compare-btn__icon svg {
+  width: 21px;
+  height: 21px;
+}
+
+/* === TEKST W JEDNEJ LINII === */
+.amazon-compare-btn__text {
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  letter-spacing: 0.2px;
+}
+
+/* "Amazon" - pogrubione, większe, z pomarańczową strzałką pod */
+.amazon-compare-btn__brand {
+  position: relative;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1;
+  padding-bottom: 4px;
+  letter-spacing: -0.3px;
+}
+
+/* Pomarańczowa strzałka pod "amaz" - klasyczne logo Amazon (od a do z) */
+.amazon-compare-btn__brand::after {
+  content: "";
+  position: absolute;
+  left: 1px;
+  width: 70%;
+  bottom: -3px;
+  height: 10px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 14' preserveAspectRatio='none'><path d='M 3 4 Q 50 17 88 5' stroke='%23ff9900' stroke-width='3.5' fill='none' stroke-linecap='round'/><polygon points='82,1 94,5 83,11' fill='%23ff9900'/></svg>");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: left center;
+}
+
+/* CHEVRON po prawej - absolutnie pozycjonowany żeby nie wpływał na centrowanie */
+.amazon-compare-btn__arrow {
+  position: absolute;
+  right: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255,255,255,0.95);
+  font-size: 21px;
+  font-weight: 300;
+  transition: transform 0.2s ease, color 0.2s ease;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.amazon-compare-btn__arrow:hover {
+  color: #ff9900;
+  background: rgba(255,255,255,0.1);
+}
+
+.amazon-compare-btn:hover .amazon-compare-btn__arrow {
+  transform: translateY(-50%) translateX(3px);
+}
+
+/* === ANIMACJE === */
+@keyframes amazonPulse {
+  0% {
+    box-shadow:
+      0 0 0 0 rgba(0, 102, 255, 0.35),
+      0 10px 24px rgba(0, 61, 255, 0.28);
+  }
+  70% {
+    box-shadow:
+      0 0 0 14px rgba(0, 102, 255, 0),
+      0 14px 34px rgba(0, 61, 255, 0.36);
+  }
+  100% {
+    box-shadow:
+      0 0 0 0 rgba(0, 102, 255, 0),
+      0 10px 24px rgba(0, 61, 255, 0.28);
+  }
+}
+
+@keyframes shineMove {
+  0% { left: -120%; }
+  100% { left: 160%; }
+}
+
+/* === SLIDE-DOWN PANEL (wysuwa się z przycisku, podąża za nim podczas scrollowania) === */
+#amz-popup {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  left: auto;
+  transform: none;
+  width: 55%;
+  min-width: 200px;
+  background: linear-gradient(135deg, #001a72 0%, #0038c7 55%, #0057ff 100%);
+  border: 1.5px solid rgba(255,255,255,0.15);
+  border-radius: 14px;
+  box-shadow:
+    0 0 16px rgba(0, 102, 255, 0.35),
+    0 0 32px rgba(0, 102, 255, 0.22),
+    0 6px 22px rgba(0, 61, 255, 0.35),
+    0 -3px 14px rgba(0, 102, 255, 0.18),
+    inset 0 1px 0 rgba(255,255,255,0.12);
+  z-index: 999999;
+  font-family: "Amazon Ember", Arial, sans-serif;
+  overflow: hidden;
+  transform-origin: top right;
+  animation: amzSlideDown 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  max-height: 500px;
+  transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+}
+
+#amz-popup.amz-collapsed {
+  max-height: 0 !important;
+  opacity: 0;
+  pointer-events: none;
+  animation: none;
+}
+
+@keyframes amzSlideDown {
+  from {
+    opacity: 0;
+    transform: scaleY(0);
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+    max-height: 500px;
+  }
+}
+
+.amz-popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 10px;
+  background: rgba(0,0,0,0.18);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* === IKONKA INFO + TOOLTIP === */
+.amz-info-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-left: 6px;
+  cursor: help;
+}
+
+.amz-info-icon {
+  font-size: 12px;
+  opacity: 0.85;
+  transition: opacity 0.15s ease;
+  display: inline-block;
+}
+
+.amz-info-wrapper:hover .amz-info-icon {
+  opacity: 1;
+}
+
+.amz-info-tooltip {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: 100%;
+  right: -8px;
+  margin-top: 8px;
+  min-width: 240px;
+  max-width: 320px;
+  padding: 10px 12px;
+  background: #1f2937;
+  color: white;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 400;
+  text-align: left;
+  line-height: 1.5;
+  z-index: 1000000;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+  transition: opacity 0.18s ease, visibility 0.18s ease;
+  pointer-events: none;
+  white-space: normal;
+}
+
+.amz-info-tooltip::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  right: 12px;
+  border: 6px solid transparent;
+  border-bottom-color: #1f2937;
+  border-top: none;
+}
+
+.amz-info-wrapper:hover .amz-info-tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.amz-tooltip-row {
+  margin-bottom: 4px;
+  color: #e8e8e8;
+}
+
+.amz-tooltip-row:last-child {
+  margin-bottom: 0;
+}
+
+.amz-tooltip-row strong {
+  color: #ff9900;
+  font-size: 12px;
+}
+
+.amz-tooltip-meta {
+  color: #a8b8c8 !important;
+  font-size: 10px;
+  font-style: italic;
+  padding-top: 4px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  margin-top: 6px;
+}
+
+.amz-tooltip-reason {
+  color: #d0d8e0 !important;
+  font-size: 10px;
+  padding: 4px 6px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 4px;
+  margin-top: 4px;
+}
+
+.amz-popup-close {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.7);
+  font-size: 18px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  width: 18px;
+  height: 18px;
+  transition: color 0.15s ease;
+}
+
+.amz-popup-close:hover { color: #ff9900; }
+.amz-popup-body { padding: 8px 10px; }
+
+.amz-popup-product {
+  display: flex;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+  padding: 7px;
+  border-radius: 6px;
+  transition: all 0.15s;
+  background: rgba(255,255,255,0.95);
+}
+
+.amz-popup-product:hover {
+  background: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.amz-popup-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 4px;
+  background: #f7f7f7;
+  flex-shrink: 0;
+}
+
+.amz-popup-info { flex: 1; min-width: 0; }
+
+.amz-popup-title {
+  font-size: 11px;
+  color: #131a22;
+  line-height: 1.25;
+  margin-bottom: 3px;
+  font-weight: 500;
+}
+
+.amz-popup-cena {
+  font-size: 13px;
+  font-weight: 700;
+  color: #b12704;
+}
+
+/* === KOLOROWE CENY === */
+.amz-popup-cena.amz-cena-tansza {
+  color: #00a650;
+  text-shadow: 0 0 8px rgba(0, 166, 80, 0.4);
+}
+
+.amz-popup-cena.amz-cena-drozsza {
+  color: #d62828;
+  text-shadow: 0 0 8px rgba(214, 40, 40, 0.4);
+}
+
+.amz-popup-cena.amz-cena-rowna {
+  color: #666;
+}
+
+/* === BADGE PORÓWNANIA === */
+.amz-porownanie {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  margin-top: 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.amz-porownanie strong {
+  font-weight: 700;
+}
+
+.amz-porownanie-tansza {
+  background: rgba(0, 166, 80, 0.18);
+  color: #c8f7d8;
+  border: 1px solid rgba(0, 200, 100, 0.4);
+}
+
+.amz-porownanie-drozsza {
+  background: rgba(214, 40, 40, 0.18);
+  color: #ffd8d8;
+  border: 1px solid rgba(255, 80, 80, 0.4);
+}
+
+.amz-porownanie-rowna {
+  background: rgba(255,255,255,0.08);
+  color: #d8e0e8;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+.amz-porownanie-icon {
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.amz-popup-link {
+  display: block;
+  text-align: center;
+  padding: 6px;
+  margin-top: 6px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 500;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  transition: color 0.15s;
+}
+
+.amz-popup-link:hover {
+  color: #ff9900;
+  text-decoration: underline;
+}
+
+.amz-popup-btn {
+  display: block;
+  text-align: center;
+  padding: 10px;
+  background: #ff9900;
+  color: #131a22;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+
+.amz-popup-btn:hover { background: #ffaa1f; }
