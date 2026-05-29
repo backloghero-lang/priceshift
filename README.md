@@ -17,7 +17,7 @@ Adds a premium "Compare with Amazon" button on every Allegro product page. When 
 3. **🧠 AI Title-Matcher** rates how well each result matches (semantic comparison, not just keywords)
 4. **⚙️ AI Params-Matcher** boosts confidence using product parameters (size, color, version) when the title alone isn't enough
 5. **💰 Compares prices** — shows green if Amazon is cheaper, red if more expensive
-6. **📊 Confidence scoring** — hover the ℹ️ icon to see exactly how the AI scored the match
+
 
 A two-stage agentic pipeline with graceful fallbacks — designed for production reliability.
 
